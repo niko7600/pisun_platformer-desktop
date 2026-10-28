@@ -73,6 +73,12 @@ import random
 import sys
 from array import array
 
+for _s in (sys.stdout, sys.stderr):                  # Windows-консоль (cp1252) не должна падать на русском тексте
+    try:
+        _s.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
 if "--smoke-test" in sys.argv:
     os.environ.setdefault("SDL_VIDEODRIVER", "dummy")
     os.environ.setdefault("SDL_AUDIODRIVER", "dummy")

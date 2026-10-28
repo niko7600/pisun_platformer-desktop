@@ -10,6 +10,9 @@ on:
 permissions:
   contents: write
 
+env:
+  PYTHONUTF8: "1"          # иначе Windows-консоль (cp1252) падает на русском тексте в smoke-тесте
+
 jobs:
   build:
     strategy:
